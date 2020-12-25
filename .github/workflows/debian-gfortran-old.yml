@@ -1,0 +1,29 @@
+name: Old
+
+on:
+  push:
+    paths:
+      - 'debian-gfortran/old/*'
+  schedule:
+    - cron: '0 0 * * 1'
+
+env:
+  dockerId: chinoune
+  imageName: debian-gfortran-testing
+  tag: old
+  code: ${{ secrets.DockerPassword }}
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: |
+        cd debian-gfortran/old
+        docker build -t $dockerId/$imageName:$tag .
+        docker login -u $dockerId -p $code
+        docker push $dockerId/$imageName:$tag
