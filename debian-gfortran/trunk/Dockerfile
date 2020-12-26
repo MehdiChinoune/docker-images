@@ -21,7 +21,6 @@ RUN git clone --depth=1 --single-branch --branch master git://gcc.gnu.org/git/gc
     && ../configure --enable-languages=c,c++,fortran --disable-multilib --disable-bootstrap \
     && make -j"$(nproc)" \
     && make install-strip \
-    && make distclean \
     && cd ../.. \
     && rm -rf ./gcc \
     && echo '/usr/local/lib64' > /etc/ld.so.conf.d/local-lib64.conf \
