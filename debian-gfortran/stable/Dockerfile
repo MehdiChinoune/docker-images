@@ -3,11 +3,8 @@ FROM debian:testing AS builder
 # Install Openblas, git, python3, cmake, make, wget and xz-utils
 RUN apt update \
     && apt dist-upgrade -y \
-    && apt install -y --no-install-recommends gfortran-10 libopenblas-dev git \
+    && apt install -y --no-install-recommends gfortran libopenblas-dev git \
        ca-certificates python3 cmake make m4 wget xz-utils \
-    && cd /usr/bin \
-    && ln -s /usr/bin/gfortran-10 gfortran \
-    && ln -s /usr/bin/gcc-10 gcc \
     && apt clean \
     && rm -rf /var/lib/apt/lists /var/cache/apt
 
