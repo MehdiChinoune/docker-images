@@ -5,7 +5,7 @@ on:
     paths:
       - 'debian-gfortran/trunk/*'
   schedule:
-    - cron: '0 0 * * 1'
+    - cron: '0 0 * * 2'
 
 jobs:
 
