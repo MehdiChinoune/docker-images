@@ -4,13 +4,13 @@ FROM debian:experimental AS builder
 # disbale -t experimental unitl debian update gcc
 RUN apt update \
     && apt dist-upgrade -y \
-    && apt install -y --no-install-recommends gfortran-11 \
+    && apt install -y --no-install-recommends gcc-snapshot \
        libopenblas-dev git ca-certificates python3 cmake make m4 wget xz-utils \
     && apt clean \
     && rm -rf /var/lib/apt/lists /var/cache/apt
 
-# Set default compilers
-ENV CC=gcc-11 FC=gfortran-11
+# Set EnvVars
+ENV PATH=/usr/lib/gcc-snapshot/bin:${PATH} LD_LIBARARY_PATH=/usr/lib/gcc-snapshot/lib:${LD_LIBARARY_PATH}
 
 # Clone and Build pFUnit
 RUN git clone --depth=1 --single-branch --branch main https://github.com/Goddard-Fortran-Ecosystem/pFUnit  \
