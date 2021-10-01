@@ -1,0 +1,19 @@
+name: Delete
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  Delete:
+    name: Delete
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: smartsquaregmbh/delete-old-packages@v0.3.2
+        with:
+          keep: 3
+          names: |
+            old
+            stable
+            trunk
