@@ -29,7 +29,7 @@ RUN wget https://github.com/HDFGroup/hdf5/archive/hdf5-1_12_1.tar.gz \
     && cd hdf5-hdf5-1_12_1 \
     && mkdir build \
     && cd build \
-    && cmake .. -DCMAKE_BUILD_TYPE=Release -DHDF5_BUILD_CPP_LIB=OFF -DHDF5_BUILD_FORTRAN=ON \
+    && cmake .. -DCMAKE_BUILD_TYPE=Release -DHDF5_BUILD_CPP_LIB=OFF -DHDF5_BUILD_FORTRAN=ON -DBUILD_TESTING=OFF \
     && make -j$(nproc) \
     && make install/strip \
     && cd ../.. \
