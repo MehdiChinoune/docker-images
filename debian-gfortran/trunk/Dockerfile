@@ -10,7 +10,7 @@ RUN apt update \
     && rm -rf /var/lib/apt/lists /var/cache/apt
 
 # Set EnvVars
-ENV PATH=/usr/lib/gcc-snapshot/bin:${PATH} LD_LIBARARY_PATH=/usr/lib/gcc-snapshot/lib:${LD_LIBARARY_PATH}
+ENV PATH=/usr/lib/gcc-snapshot/bin:${PATH} LD_LIBRARY_PATH=/usr/lib/gcc-snapshot/lib:${LD_LIBRARY_PATH}
 
 # Clone and Build pFUnit
 RUN git clone --depth=1 --single-branch --branch main https://github.com/Goddard-Fortran-Ecosystem/pFUnit  \
