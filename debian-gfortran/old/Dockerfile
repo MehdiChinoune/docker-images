@@ -1,4 +1,4 @@
-FROM debian:testing AS builder
+FROM debian:stable AS builder
 
 # Install Openblas, git, python3, cmake, make, wget and xz-utils
 RUN apt update \
