@@ -12,19 +12,19 @@ jobs:
 
   build:
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Login to GHCR
-      uses: docker/login-action@v1
+      uses: docker/login-action@v2
       with:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
         password: ${{ github.token }}
     - name: Build and push
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v4
       with:
         file: ./debian-gfortran/old/Dockerfile
         push: true
