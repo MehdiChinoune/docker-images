@@ -10,10 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: smartsquaregmbh/delete-old-packages@v0.3.2
+      - uses: Chizkiyahu/delete-untagged-ghcr-action@v2
         with:
-          keep: 3
-          names: |
-            old
-            stable
-            trunk
+          token: ${{ secrets.PAT }}
+          owner_type: user
