@@ -4,7 +4,7 @@ FROM debian:experimental AS builder
 RUN apt update \
     && apt dist-upgrade -y \
     && apt install -t experimental -y --no-install-recommends gfortran-14 \
-       libopenblas-dev git libcurl3-gnutls ca-certificates python3 cmake \
+       libopenblas-dev git libcurl3-gnutls ca-certificates python3 cmake make \
        ninja-build m4 wget xz-utils \
     && apt clean \
     && rm -rf /var/lib/apt/lists /var/cache/apt
@@ -17,9 +17,9 @@ RUN git clone --depth=1 --single-branch --branch main https://github.com/Goddard
     && cd pFUnit \
     && mkdir build \
     && cd build \
-    && cmake .. -GNinja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/opt/pfunit \
-    && ninja \
-    && ninja install \
+    && cmake .. -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/opt/pfunit \
+    && cmake --build . --parallel $(nproc) \
+    && cmake --install . \
     && cd ../.. \
     && rm -rf ./pFUnit
 

@@ -14,8 +14,8 @@ RUN git clone --depth=1 --single-branch --branch main https://github.com/Goddard
     && mkdir build \
     && cd build \
     && cmake .. -GNinja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/opt/pfunit \
-    && ninja \
-    && ninja install \
+    && cmake --build . --parallel $(nproc) \
+    && cmake --install . \
     && cd ../.. \
     && rm -rf ./pFUnit
 
