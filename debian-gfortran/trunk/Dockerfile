@@ -9,7 +9,7 @@ RUN apt update \
     && rm -rf /var/lib/apt/lists /var/cache/apt
 
 # Set default compilers
-ENV CC=gcc-13 FC=gfortran-13
+ENV CC=gcc-14 FC=gfortran-14
 
 # Clone and Build pFUnit
 RUN git clone --depth=1 --single-branch --branch main https://github.com/Goddard-Fortran-Ecosystem/pFUnit  \
@@ -23,10 +23,10 @@ RUN git clone --depth=1 --single-branch --branch main https://github.com/Goddard
     && rm -rf ./pFUnit
 
 # Download and Build HDF5
-RUN wget https://github.com/HDFGroup/hdf5/archive/hdf5-1_14_1-2.tar.gz \
-    && tar -xf hdf5-1_14_1-2.tar.gz \
-    && rm hdf5-1_14_1-2.tar.gz \
-    && cd hdf5-hdf5-1_14_1-2 \
+RUN wget https://github.com/HDFGroup/hdf5/archive/hdf5-1_14_3.tar.gz \
+    && tar -xf hdf5-1_14_3.tar.gz \
+    && rm hdf5-1_14_3.tar.gz \
+    && cd hdf5-hdf5-1_14_3 \
     && mkdir build \
     && cd build \
     && cmake .. \
@@ -39,6 +39,6 @@ RUN wget https://github.com/HDFGroup/hdf5/archive/hdf5-1_14_1-2.tar.gz \
     && ninja \
     && ninja install/strip \
     && cd ../.. \
-    && rm -rf ./hdf5-hdf5-1_14_1-2
+    && rm -rf ./hdf5-hdf5-1_14_3
 
 CMD ["/bin/bash"]
