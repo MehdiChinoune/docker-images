@@ -13,7 +13,7 @@ RUN apt update \
 ENV CC=gcc-14 FC=gfortran-14
 
 # Clone and Build pFUnit
-RUN git clone --depth=1 --single-branch --branch main https://github.com/Goddard-Fortran-Ecosystem/pFUnit  \
+RUN git clone --recursive --depth=1 --single-branch --branch main https://github.com/Goddard-Fortran-Ecosystem/pFUnit  \
     && cd pFUnit \
     && mkdir build \
     && cd build \

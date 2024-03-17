@@ -9,7 +9,7 @@ RUN apt update \
     && rm -rf /var/lib/apt/lists /var/cache/apt
 
 # Clone and Build pFUnit
-RUN git clone --depth=1 --single-branch --branch main https://github.com/Goddard-Fortran-Ecosystem/pFUnit  \
+RUN git clone --recursive --depth=1 --single-branch --branch main https://github.com/Goddard-Fortran-Ecosystem/pFUnit  \
     && cd pFUnit \
     && mkdir build \
     && cd build \
