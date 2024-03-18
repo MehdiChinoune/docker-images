@@ -4,7 +4,7 @@ FROM debian:stable AS builder
 RUN apt update \
     && apt dist-upgrade -y \
     && apt install -y --no-install-recommends gfortran libopenblas-dev git \
-       ca-certificates python3 cmake ninja-build m4 wget xz-utils \
+       ca-certificates python3 cmake ninja-build make m4 wget xz-utils \
     && apt clean \
     && rm -rf /var/lib/apt/lists /var/cache/apt
 
