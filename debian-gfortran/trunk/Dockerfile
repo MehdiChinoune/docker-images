@@ -3,14 +3,14 @@ FROM debian:experimental AS builder
 # Install Openblas, git, python3, cmake, make, wget and xz-utils
 RUN apt update \
     && apt dist-upgrade -y \
-    && apt install -t experimental -y --no-install-recommends gfortran-13 \
+    && apt install -t experimental -y --no-install-recommends gfortran-14 \
        libopenblas-dev git libcurl3-gnutls ca-certificates python3 cmake make \
        ninja-build m4 wget xz-utils \
     && apt clean \
     && rm -rf /var/lib/apt/lists /var/cache/apt
 
 # Set default compilers
-ENV CC=gcc-13 FC=gfortran-13
+ENV CC=gcc-14 FC=gfortran-14
 
 # Clone and Build pFUnit
 RUN git clone --recursive --depth=1 --single-branch --branch main https://github.com/Goddard-Fortran-Ecosystem/pFUnit  \
