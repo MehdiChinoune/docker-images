@@ -33,6 +33,7 @@ RUN wget https://github.com/HDFGroup/hdf5/archive/hdf5_1.14.4.2/hdf5-1.14.4.2.ta
     && cmake .. \
       -GNinja \
       -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=/usr/local/hdf5 \
       -DHDF5_BUILD_CPP_LIB=OFF \
       -DHDF5_BUILD_FORTRAN=ON \
       -DBUILD_TESTING=OFF \
