@@ -1,16 +1,16 @@
-FROM debian:unstable AS builder
+FROM debian:experimental AS builder
 
 # Install Openblas, git, python3, cmake, make, wget and xz-utils
 RUN apt update \
     && apt dist-upgrade -y \
-    && apt install -y --no-install-recommends gcc-snapshot \
+    && apt install -t experimental -y --no-install-recommends gfortran-15 \
        libopenblas-dev git libcurl3t64-gnutls ca-certificates python3 cmake make \
        ninja-build m4 wget xz-utils zlib1g-dev libaec-dev \
     && apt clean \
     && rm -rf /var/lib/apt/lists /var/cache/apt
 
 # Set default compilers
-ENV CC=/usr/lib/gcc-snapshot/bin/gcc FC=/usr/lib/gcc-snapshot/bin/gfortran
+ENV CC=gcc-15 FC=gfortran-15
 
 # Clone and Build pFUnit
 RUN git clone --recursive --depth=1 --single-branch --branch main https://github.com/Goddard-Fortran-Ecosystem/pFUnit  \
