@@ -27,10 +27,10 @@ RUN git clone --recursive --depth=1 --single-branch --branch main https://github
     && rm -rf ./pFUnit
 
 # Download and Build HDF5
-RUN wget https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.5/hdf5-1.14.5.tar.gz \
-    && tar -xf hdf5-1.14.5.tar.gz \
-    && rm hdf5-1.14.5.tar.gz \
-    && cd hdf5-1.14.5 \
+RUN wget https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.6/hdf5-1.14.6.tar.gz \
+    && tar -xf hdf5-1.14.6.tar.gz \
+    && rm hdf5-1.14.6.tar.gz \
+    && cd hdf5-1.14.6 \
     && cmake \
       -GNinja \
       -DCMAKE_BUILD_TYPE=Release \
@@ -43,6 +43,6 @@ RUN wget https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.5/hdf5-1.1
     && cmake --build build \
     && cmake --install build --strip \
     && cd .. \
-    && rm -rf ./hdf5-1.14.5
+    && rm -rf ./hdf5-1.14.6
 
 CMD ["/bin/bash"]
