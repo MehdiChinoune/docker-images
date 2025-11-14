@@ -10,6 +10,7 @@ RUN apt update \
 
 # Set default compilers
 ENV CC=gcc-13 FC=gfortran-13
+ENV HDF5_VER=2.0.0
 
 # Clone and Build pFUnit
 RUN git clone --recursive --depth=1 --single-branch --branch main https://github.com/Goddard-Fortran-Ecosystem/pFUnit  \
@@ -26,10 +27,10 @@ RUN git clone --recursive --depth=1 --single-branch --branch main https://github
     && rm -rf ./pFUnit
 
 # Download and Build HDF5
-RUN wget https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.6/hdf5-1.14.6.tar.gz \
-    && tar -xf hdf5-1.14.6.tar.gz \
-    && rm hdf5-1.14.6.tar.gz \
-    && cd hdf5-1.14.6 \
+RUN wget https://github.com/HDFGroup/hdf5/releases/download/hdf5_${HDF5_VER}/hdf5-${HDF5_VER}.tar.gz \
+    && tar -xf hdf5-${HDF5_VER}.tar.gz \
+    && rm hdf5-${HDF5_VER}.tar.gz \
+    && cd hdf5-${HDF5_VER} \
     && cmake \
       -GNinja \
       -DCMAKE_BUILD_TYPE=Release \
@@ -42,6 +43,6 @@ RUN wget https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.6/hdf5-1.1
     && cmake --build build \
     && cmake --install build --strip \
     && cd .. \
-    && rm -rf ./hdf5-1.14.6
+    && rm -rf ./hdf5-${HDF5_VER}
 
 CMD ["/bin/bash"]
