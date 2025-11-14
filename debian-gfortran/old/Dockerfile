@@ -3,13 +3,13 @@ FROM debian:testing AS builder
 # Install Openblas, git, python3, cmake, make, wget and xz-utils
 RUN apt update \
     && apt dist-upgrade -y \
-    && apt install -y --no-install-recommends gfortran-13 libopenblas-dev git \
+    && apt install -y --no-install-recommends gfortran-14 libopenblas-dev git \
        ca-certificates python3 cmake ninja-build make m4 wget xz-utils zlib1g-dev libaec-dev \
     && apt clean \
     && rm -rf /var/lib/apt/lists /var/cache/apt
 
 # Set default compilers
-ENV CC=gcc-13 FC=gfortran-13
+ENV CC=gcc-14 FC=gfortran-14
 ENV HDF5_VER=2.0.0
 
 # Clone and Build pFUnit
