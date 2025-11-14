@@ -3,7 +3,7 @@ FROM debian:unstable AS builder
 # Install Openblas, git, python3, cmake, make, wget and xz-utils
 RUN apt update \
     && apt dist-upgrade -y \
-    && apt install -t experimental -y --no-install-recommends gcc-snapshot \
+    && apt install -y --no-install-recommends gcc-snapshot \
        libopenblas-dev git libcurl3t64-gnutls ca-certificates python3 cmake make \
        ninja-build m4 wget xz-utils zlib1g-dev libaec-dev \
     && apt clean \
