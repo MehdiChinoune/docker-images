@@ -10,7 +10,9 @@ RUN apt update \
     && rm -rf /var/lib/apt/lists /var/cache/apt
 
 # Set default compilers
-ENV CC=/usr/lib/gcc-snapshot/bin/gcc FC=/usr/lib/gcc-snapshot/bin/gfortran
+ENV CC=/usr/lib/gcc-snapshot/bin/gcc \
+    FC=/usr/lib/gcc-snapshot/bin/gfortran \
+    LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/lib/gcc-snapshot/lib
 ENV HDF5_VER=2.0.0
 
 # Clone and Build pFUnit
