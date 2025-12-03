@@ -27,7 +27,7 @@ RUN git clone --recursive --depth=1 --single-branch --branch main https://github
     && rm -rf ./pFUnit
 
 # Download and Build HDF5
-RUN wget https://github.com/HDFGroup/hdf5/releases/download/hdf5_${HDF5_VER}/hdf5-${HDF5_VER}.tar.gz \
+RUN wget https://github.com/HDFGroup/hdf5/releases/download/${HDF5_VER}/hdf5-${HDF5_VER}.tar.gz \
     && tar -xf hdf5-${HDF5_VER}.tar.gz \
     && rm hdf5-${HDF5_VER}.tar.gz \
     && cd hdf5-${HDF5_VER} \
